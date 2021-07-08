@@ -1,7 +1,7 @@
 {
     "name": "fetch-with-loading",
-    "version": "1.0.1",
-    "description": "fetch-with-loading 是一个带有 loading 的 promise 扩展",
+    "version": "1.0.2",
+    "description": "fetch-with-loading 是一个带有 loading 的 promise 扩展库",
     "main": "fetch-with-loading.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

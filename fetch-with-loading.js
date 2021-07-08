@@ -40,12 +40,10 @@ class fetchWithLoading {
         })
     }
     initLoading(msg) {
-        let el = document.getElementById('toast');
-        if (!el) {
-            el = document.createElement('div');
-            el.id = 'toast';
-            el.className = 'toast';
-            el.setAttribute('loading','');
+        if (!window._LOADING_EL) {
+            window._LOADING_EL = document.createElement('div');
+            window._LOADING_EL.className = 'toast';
+            window._LOADING_EL.setAttribute('loading','');
             const style = document.createElement('style');
             style.textContent = `/* toast */
 .toast {
@@ -91,28 +89,25 @@ class fetchWithLoading {
 }
 `
             document.querySelector('head').appendChild(style);
-            document.body.appendChild(el);
+            document.body.appendChild(window._LOADING_EL);
         }
-        el.innerText = msg;
-        return el;
+        window._LOADING_EL.innerText = msg;
     }
     showLoading(tips, timestep) {
         let index = 0;
-        const el = this.initLoading(tips[index])
-        el.classList.add('show');
+        this.initLoading(tips[index])
+        window._LOADING_EL.classList.add('show');
         this.timerLoading && clearInterval(this.timerLoading);
         this.timerLoading = setInterval(() => {
-            if (el.hasAttribute('loading')) {
-                index++;
-                this.initLoading(tips[index]);
-            }
+            index++;
+            this.initLoading(tips[index]);
             if (index >= tips.length -1 ) {
                 this.timerLoading && clearInterval(this.timerLoading);
             }
         }, timestep)
     }
     hideLoading() {
-        document.getElementById('toast').classList.remove('show')
+        window._LOADING_EL.classList.remove('show')
         this.timerLoading && clearInterval(this.timerLoading);
     }
     timeout(delay, result) {
