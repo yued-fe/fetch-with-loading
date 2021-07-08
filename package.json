@@ -1,6 +1,6 @@
 {
     "name": "fetch-with-loading",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "fetch-with-loading 是一个带有 loading 的 promise 扩展",
     "main": "fetch-with-loading.js",
     "scripts": {

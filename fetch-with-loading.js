@@ -1,3 +1,9 @@
+/**
+ * @fetch-with-loading.js
+ * @author xboxyan
+ * @email yanwenbin1991@live.com
+ * Created: 21-07-08
+ */
 class fetchWithLoading {
     constructor(options, NativeFetch){
         this.initLoading('');

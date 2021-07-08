@@ -123,7 +123,7 @@ const axios_with_loading = new fetchWithLoading(['加载中...','还在努力加
 
 ## 自定义样式
 
-loading 的样式可以通过以下自定义
+loading 的样式可以通过以下自定义，默认是一个黑色半透明的圆角矩形
 
 ```css
 .toast{
