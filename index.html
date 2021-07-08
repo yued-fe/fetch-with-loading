@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch-with-loading</title>
+    <style>
+        body {
+            padding: 0 0.5em 100px;
+            background: #fff;
+        }
+
+        pre {
+            padding: 12px 1em;
+            margin: 1em 0;
+            background-color: #f5f7f9;
+            font-family: Consolas, monospace;
+            font-size: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border-radius: 4px;
+            box-shadow: inset 1px 0 #e3e5e8, inset 0 1px #e3e5e8, inset -1px 0 #eaf0f5, inset 0 -1px #eaf0f5;
+            tab-size: 2;
+        }
+
+        blockquote {
+            font-family: 'kaiti', 'STKaiti';
+            border-left: solid silver;
+            background-color: #ffffe0;
+            padding: 0.5em 1em;
+            background-color: beige;
+            margin: 0;
+        }
+
+        button,
+        input {
+            margin: 5px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        input[type="file"i] {
+            outline: 0;
+        }
+
+        input[type="file"i]::-webkit-file-upload-button {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/LightTip.css">
+    <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/Button.css">
+    <script src="https://qidian.gtimg.com/lulu/pure/js/common/ui/LightTip.js"></script>
+</head>
+
+<body>
+    <h1>fetch-with-loading</h1>
+    <blockquote>推荐打开控制台自定义网络延时</blockquote>
+    <script src="./fetch-with-loading.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.fetch = new fetchWithLoading();
+        window.fetch_custom = new fetchWithLoading();
+        window.axios = new fetchWithLoading({}, axios);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{
+    "name": "fetch-with-loading",
+    "version": "1.0.0",
+    "description": "fetch-with-loading 是一个带有 loading 的 promise 扩展",
+    "main": "fetch-with-loading.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yued-fe/fetch-with-loading.git"
+    },
+    "keywords": [
+        "fetch",
+        "axios",
+        "loading",
+        "yux"
+    ],
+    "author": "XboxYan",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/yued-fe/fetch-with-loading/issues"
+    },
+    "files": [
+        "fetch-with-loading.js"
+    ],
+    "homepage": "https://github.com/yued-fe/fetch-with-loading#readme"
+}
