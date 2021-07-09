@@ -17,6 +17,8 @@ fetch-with-loading 是一个带有 loading 的 promise 扩展
 1. 如果请求超过200ms，则至少显示200ms的loading，避免一闪而过的情况
 1. 如果请求时间更长，比如超过10s，需要每隔3秒更换提示，缓解用户焦虑，如："加载中=>正在努力加载中=>快好了"
 
+[在线预览](https://yued-fe.github.io/fetch-with-loading/)
+
 ## 快速开始
 
 ### 安装

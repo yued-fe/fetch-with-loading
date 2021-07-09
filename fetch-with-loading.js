@@ -96,18 +96,19 @@ class fetchWithLoading {
     showLoading(tips, timestep) {
         let index = 0;
         this.initLoading(tips[index])
+        window._FETCH_LOADING_ = this;
         window._LOADING_EL.classList.add('show');
         this.timerLoading && clearInterval(this.timerLoading);
         this.timerLoading = setInterval(() => {
             index++;
             this.initLoading(tips[index]);
-            if (index >= tips.length -1 ) {
+            if (index >= tips.length -1 || window._FETCH_LOADING_ !== this) {
                 this.timerLoading && clearInterval(this.timerLoading);
             }
         }, timestep)
     }
     hideLoading() {
-        window._LOADING_EL.classList.remove('show')
+        window._FETCH_LOADING_ === this && window._LOADING_EL.classList.remove('show');
         this.timerLoading && clearInterval(this.timerLoading);
     }
     timeout(delay, result) {

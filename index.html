@@ -34,6 +34,10 @@
             margin: 0;
         }
 
+        .green{
+            color: green;
+        }
+
         button,
         input {
             margin: 5px;
@@ -53,19 +57,91 @@
     </style>
     <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/LightTip.css">
     <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/Button.css">
+    <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/Loading.css">
     <script src="https://qidian.gtimg.com/lulu/pure/js/common/ui/LightTip.js"></script>
+    <script src="https://qidian.gtimg.com/lulu/pure/js/common/ui/Loading.js"></script>
 </head>
 
 <body>
     <h1>fetch-with-loading</h1>
-    <blockquote>推荐打开控制台自定义网络延时</blockquote>
-    <button class="ui-button" data-type="primary">fetch</button>
+    <blockquote>这里采用定时器模拟</blockquote>
+    <h3>常规用法</h3> 
+    <pre>window.fetch = new fetchWithLoading();</pre>
+    <button class="ui-button" data-type="primary" onclick="fetch1(Math.random()*200, this)">很快的请求</button>
+    <button class="ui-button" data-type="success" onclick="fetch1(200+Math.random()*1000, this)">正常请求</button>
+    <button class="ui-button" data-type="warning" onclick="fetch1(3000+Math.random()*10000, this)">很长时间的请求</button>
+    <h3>自定义提示</h3> 
+    <pre>window.fetch = new fetchWithLoading(<span class="green">['请求中...','还在请求中...','可能会有点慢...','快好了，还等会...']</span>);</pre>
+    <button class="ui-button" data-type="warning" onclick="fetch2(3000+Math.random()*10000, this)">自定义提示</button>
+    <h3>全部配置项</h3> 
+    <pre>window.fetch = new fetchWithLoading({
+    tips: ['请求中...','还在请求中...','可能会有点慢...','别着急...','马上就好了...'],
+    timestep: 2000, <span class="green">//表示每隔多长时间更换提示信息</span>
+    delay: 200, <span class="green">//表示在多长时间内完成请求可无需显示提示信息</span>
+    duration: 500, <span class="green">//表示出现提示信息后，至少显示多长时间</span>
+});</pre>
+    <button class="ui-button" data-type="primary" onclick="fetch3(Math.random()*200, this)">很快的请求</button>
+    <button class="ui-button" data-type="success" onclick="fetch3(200+Math.random()*1000, this)">正常请求</button>
+    <button class="ui-button" data-type="warning" onclick="fetch3(3000+Math.random()*10000, this)">很长时间的请求</button>
+    <h3>自定义样式</h3>
+    <pre>.toast{
+    <span class="green">/*toast*/</span>
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}</pre>
+    <button class="ui-button" data-type="primary" onclick="addCss(this)">加载以上 CSS</button> 
     <script src="./fetch-with-loading.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <script>
-        window.fetch = new fetchWithLoading();
-        window.fetch_custom = new fetchWithLoading();
-        window.axios = new fetchWithLoading({}, axios);
+
+        window.fetch_custom1 = new fetchWithLoading({},timeout);
+        window.fetch_custom2 = new fetchWithLoading(['请求中...','还在请求中...','可能会有点慢...','快好了，还等会...'],timeout);
+        window.fetch_custom3 = new fetchWithLoading({
+            tips: ['请求中...','还在请求中...','可能会有点慢...','别着急...','马上就好了...'],
+            timestep: 2000,
+            delay: 200,
+            duration: 500,
+        },timeout);
+        // window.axios = new fetchWithLoading({}, axios);
+        function timeout(delay) {
+            return new Promise(resolve => {
+                setTimeout(() => resolve(true), delay);
+            });
+        }
+
+        function fetch1(time, el){
+            el.disabled = true;
+            fetch_custom1(time).then(res => {
+                el.disabled = false;
+                new LightTip().success('请求成功，耗时'+time+'ms');
+            })
+        }
+        function fetch2(time, el){
+            el.disabled = true;
+            fetch_custom2(time).then(res => {
+                el.disabled = false;
+                new LightTip().success('请求成功，耗时'+time+'ms');
+            })
+        }
+        function fetch3(time, el){
+            el.disabled = true;
+            fetch_custom3(time).then(res => {
+                el.disabled = false;
+                new LightTip().success('请求成功，耗时'+time+'ms');
+            })
+        }
+        function addCss(el){
+            const style = document.createElement('style');
+            style.textContent = `.toast{
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}`
+            document.querySelector('head').appendChild(style);
+            el.innerText = 'CSS 加载完毕，重新测试以上案例'
+            el.disabled = true;
+        }
     </script>
 </body>
 
