@@ -69,11 +69,11 @@ class fetchWithLoading {
 }
 .toast[loading]::before {
     content: '';
-    width: .8em;
-    height: .8em;
+    width: 12px;
+    height: 12px;
     border: 2px solid;
     border-top-color: transparent;
-    border-radius: 1em;
+    border-radius: 100%;
     flex-shrink: 0;
     margin: .1em .5em .1em 0;
     animation: rotate 1s linear infinite;
