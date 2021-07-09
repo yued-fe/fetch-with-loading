@@ -71,7 +71,9 @@
     <button class="ui-button" data-type="success" onclick="fetch1(200+Math.random()*1000, this)">正常请求</button>
     <button class="ui-button" data-type="warning" onclick="fetch1(3000+Math.random()*10000, this)">很长时间的请求</button>
     <h3>自定义提示</h3> 
-    <pre>window.fetch = new fetchWithLoading(<span class="green">['请求中...','还在请求中...','可能会有点慢...','快好了，还等会...']</span>);</pre>
+    <pre>window.fetch = new fetchWithLoading(<span class="green">['请求中...','还在请求中...','可能会有点慢...','快好了，还等会...']</span>);
+<span class="green">//请求</span>
+fetch('/list').then(res => console.log(res))</pre>
     <button class="ui-button" data-type="warning" onclick="fetch2(3000+Math.random()*10000, this)">自定义提示</button>
     <h3>全部配置项</h3> 
     <pre>window.fetch = new fetchWithLoading({
@@ -79,7 +81,10 @@
     timestep: 2000, <span class="green">//表示每隔多长时间更换提示信息</span>
     delay: 200, <span class="green">//表示在多长时间内完成请求可无需显示提示信息</span>
     duration: 500, <span class="green">//表示出现提示信息后，至少显示多长时间</span>
-});</pre>
+});
+<span class="green">//请求</span>
+fetch('/list').then(res => console.log(res))
+</pre>
     <button class="ui-button" data-type="primary" onclick="fetch3(Math.random()*200, this)">很快的请求</button>
     <button class="ui-button" data-type="success" onclick="fetch3(200+Math.random()*1000, this)">正常请求</button>
     <button class="ui-button" data-type="warning" onclick="fetch3(3000+Math.random()*10000, this)">很长时间的请求</button>
