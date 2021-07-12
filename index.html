@@ -47,12 +47,11 @@
             font-size: 12px;
         }
 
-        input[type="file"i] {
-            outline: 0;
+        a, .blue, a.dark[href]:hover {
+            color: #2a80eb;
         }
-
-        input[type="file"i]::-webkit-file-upload-button {
-            display: none;
+        a, a:hover {
+            text-decoration: none;
         }
     </style>
     <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/pure/css/common/ui/LightTip.css">
@@ -65,6 +64,8 @@
 <body>
     <h1>fetch-with-loading</h1>
     <blockquote>这里采用定时器模拟</blockquote>
+    <h3>github</h3> 
+    <a href="https://github.com/yued-fe/fetch-with-loading">https://github.com/yued-fe/fetch-with-loading</a>
     <h3>常规用法</h3> 
     <pre>window.fetch = new fetchWithLoading();</pre>
     <button class="ui-button" data-type="primary" onclick="fetch1(Math.random()*200, this)">很快的请求</button>
