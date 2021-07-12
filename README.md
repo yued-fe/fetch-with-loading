@@ -123,6 +123,20 @@ import axios from 'axios';
 const axios_with_loading = new fetchWithLoading(['加载中...','还在努力加载中...','请稍等，快好了...'], axios)
 ```
 
+如果需要自定义拦截器
+
+```js
+import axios from 'axios';
+const service = axios.create({...});
+// 请求拦截器
+service.interceptors.request.use(）;
+// 响应拦截器
+service.interceptors.response.use();
+// fetch with loading
+const axios_with_loading = new fetchWithLoading(['加载中...','还在努力加载中...','请稍等，快好了...'], service);
+```
+也就是说，不影响原有逻辑，只需要在最后包裹一层就行了
+
 ## 自定义样式
 
 loading 的样式可以通过以下自定义，默认是一个黑色半透明的圆角矩形
