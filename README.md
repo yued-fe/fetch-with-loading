@@ -137,6 +137,26 @@ const axios_with_loading = new fetchWithLoading(['加载中...','还在努力加
 ```
 也就是说，不影响原有逻辑，只需要在最后包裹一层就行了
 
+## 其他耗时操作
+
+不仅仅是请求，其他耗时操作也同样适用，比如 setTimeout
+
+```js
+// 需要改写成 promise
+function timeout(delay) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(true), delay);
+    });
+}
+// 封装
+const timeout_with_loading = new fetchWithLoading(['加载中...','还在努力加载中...','请稍等，快好了...'], timeout);
+
+// 使用
+timeout_with_loading(10000).then(res => console.log(res))
+```
+
+通常可以用来模拟请求，[在线预览](https://yued-fe.github.io/fetch-with-loading/)
+
 ## 自定义样式
 
 loading 的样式可以通过以下自定义，默认是一个黑色半透明的圆角矩形
