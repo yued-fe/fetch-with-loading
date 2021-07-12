@@ -145,4 +145,4 @@ loading 的样式可以通过以下自定义，默认是一个黑色半透明的
 
 ## 联系我
 
-有相关问题或者意见可与我联系 yanwenbin@yuewen.com
+有相关问题或者意见可与我联系 yanwenbin@yuewen.com 或者直接提 [issue](https://github.com/yued-fe/fetch-with-loading/issues)
